@@ -6,7 +6,7 @@
 // ---------------------------------------------------
  
 public class DemoSudoku {
-	public static int size = 6;					// size of board, i.e. 9 x 9
+	public static int size = 9;					// size of board, i.e. 9 x 9
 	String[][] board = new String[size][size];	// declares a 9 x 9 string array
 	String stringWithAllDigits = "123456789";	// stores all 9 digits as a string
 	String[][] tempA = new String[3][3];		// temporary array 2D stores 3by3Rigions
@@ -19,30 +19,30 @@ public class DemoSudoku {
 		}
 		// Store single digits as given in board that must be solved
 		//board 1
-		/*board[0][1] = "6"; board[0][3] = "1"; board[0][5] = "4"; board[0][7] = "5"; board[1][2] = "8"; 
+		/*board[0][1] = "6"; board[0][3] = "1"; board[0][5] = "4"; board[0][7] = "5"; board[1][2] = "8";
 		board[1][3] = "3"; board[1][5] = "5"; board[1][6] = "6"; board[2][0] = "2"; board[2][8] = "1";
 		board[3][0] = "8"; board[3][3] = "4"; board[3][5] = "7"; board[3][8] = "6"; board[4][2] = "6"; 
 		board[4][6] = "3"; board[5][0] = "7"; board[5][3] = "9"; board[5][5] = "1"; board[5][8] = "4";
  		board[6][0] = "5"; board[6][8] = "2"; board[7][2] = "7"; board[7][3] = "2"; board[7][5] = "6"; 
-		board[7][6] = "9"; board[8][1] = "4"; board[8][3] = "5"; board[8][5] = "8"; board[8][7] = "7";
-	*/
+		board[7][6] = "9"; board[8][1] = "4"; board[8][3] = "5"; board[8][5] = "8"; board[8][7] = "7";*/
+
 		//board2
-	/*	board[0][0] = "7"; board[0][1] = "1"; board[1][2] = "9"; board[5][3] = "8"; board[7][5] = "4"; 
+		board[0][0] = "7"; board[0][1] = "1"; board[1][2] = "9"; board[5][3] = "8"; board[7][5] = "4";
 		board[1][0] = "8"; board[2][1] = "5"; board[2][2] = "2"; board[8][3] = "1"; board[8][5] = "3";
 		board[3][0] = "5"; board[3][1] = "6"; board[4][2] = "1"; board[2][4] = "1"; board[3][6] = "8"; 
 		board[0][5] = "8"; board[5][1] = "2"; board[5][2] = "3"; board[3][4] = "4"; board[4][6] = "7";
 		board[3][5] = "1"; board[7][1] = "3"; board[1][3] = "2"; board[5][4] = "7"; board[6][6] = "1"; 
 		board[7][0] = "1"; board[6][5] = "5"; board[2][3] = "4"; board[6][4] = "8"; board[7][6] = "9";
 		board[1][7] = "1"; board[3][7] = "3"; board[5][7] = "4"; board[8][7] = "5"; board[8][8] = "4";
-		board[7][8] = "8"; board[5][8] = "1"; board[1][8] = "5"; board[0][3] = "3"; board[6][7] = "7"; */
+		board[7][8] = "8"; board[5][8] = "1"; board[1][8] = "5"; board[0][3] = "3"; board[6][7] = "7";
 	
 		
 		//board3
 		
-		board[0][1] = "4";  board[0][5] = "5";  board[1][2] = "6"; 
+		/*board[0][1] = "4";  board[0][5] = "5";  board[1][2] = "6";
 		 board[1][5] = "1";  board[2][0] = "1"; board[2][2] = "3";
 		 board[3][3] = "3"; board[3][5] = "2";  board[4][0] = "3"; 
-		board[4][3] = "1"; board[5][0] = "6"; board[5][4] = "2"; 
+		board[4][3] = "1"; board[5][0] = "6"; board[5][4] = "2"; */
 		
 	//	/*board[0][0] = "6";*/ board[0][1] = "2";/*board[0][2] = "4"; board[0][3] = "5"; board[0][4] = "8"; board[0][5] = "5"; board[0][6] = "5"; board[0][7] = "5"; board[0][8] = "4";*/
 	//	board[1][0] = "9";/* board[1][1] = "1"; board[1][2] = "4";*/ board[1][3] = "3";/* board[1][4] = "8"; board[1][5] = "5"; board[1][6] = "5"; board[1][7] = "5"; board[1][8] = "4";*/
@@ -123,15 +123,15 @@ public class DemoSudoku {
 	}
 	
 	public void do3by3Regions(){
-		removeFrom3by3Region(0,0);
-		removeFrom3by3Region(0,3);
-		removeFrom3by3Region(2,0);
-		removeFrom3by3Region(2,3);
-		removeFrom3by3Region(4,0);
-		removeFrom3by3Region(4,3);
-		/*removeFrom3by3Region(6,0);
-		removeFrom3by3Region(6,3);
-		removeFrom3by3Region(6,6);*/
+        removeFrom3by3Region(0,0);
+        removeFrom3by3Region(0,3);
+        removeFrom3by3Region(0,6);
+        removeFrom3by3Region(3,0);
+        removeFrom3by3Region(3,3);
+        removeFrom3by3Region(3,6);
+        removeFrom3by3Region(6,0);
+        removeFrom3by3Region(6,3);
+        removeFrom3by3Region(6,6);
 	}
 	
 	public void doTry(int n){
@@ -288,6 +288,8 @@ public class DemoSudoku {
 					
 				}
 			}
+			displayBoard();
+			break;
 		}
 		do3by3Regions();
 		System.out.println("\n");
@@ -303,7 +305,8 @@ public class DemoSudoku {
 	public static void main(String args[])
     {
 		DemoSudoku testerObjct = new DemoSudoku();	
-		testerObjct.run();     
+		testerObjct.run();    
+		 
     }
 }
 
