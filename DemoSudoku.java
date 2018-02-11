@@ -288,8 +288,7 @@ public class DemoSudoku {
 					
 				}
 			}
-			displayBoard();
-			break;
+
 		}
 		do3by3Regions();
 		System.out.println("\n");
